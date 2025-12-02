@@ -90,7 +90,7 @@ const CheckoutPage = ({ cart }) => {
                               checked={deliveryOption.id === cartItem.deliveryOptionId}
                               className="delivery-option-input"
                               name={`delivery-option-${cartItem.productId}`}
-                              readOnly
+                              onChange={() => {}}
                             />
                             <div>
                               <div className="delivery-option-date">
