@@ -4,7 +4,7 @@ import { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router";
 import Header from "../../components/Header";
 import formatMoney from "../../utils/money";
-import BuyAgainIcon from "../assets/images/icons/buy-again.png";
+import BuyAgainIcon from "../../assets/images/icons/buy-again.png";
 import "./OrdersPage.css";
 
 const OrdersPage = ({ cart }) => {
@@ -49,7 +49,7 @@ const OrdersPage = ({ cart }) => {
                 <div className="order-details-grid">
                   {order.products.map((orderProduct) => {
                     return (
-                      <Fragment key={orderProduct.id}>
+                      <Fragment key={orderProduct.product.id}>
                         <div className="product-image-container">
                           <img src={orderProduct.product.image} />
                         </div>
