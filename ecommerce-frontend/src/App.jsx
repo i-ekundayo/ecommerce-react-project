@@ -19,8 +19,6 @@ function App() {
     fetchAppData();
   }, []);
 
-  // console.log(cart);
-
   return (
     <Routes>
       <Route index element={<HomePage cart={cart} />} />
