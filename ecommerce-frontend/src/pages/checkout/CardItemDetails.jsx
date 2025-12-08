@@ -6,6 +6,7 @@ const CardItemDetails = ({cartItem, loadCart}) => {
     await axios.delete(`/api/cart-items/${cartItem.productId}`);
     await loadCart();
   }
+
   return (
     <>
       <img className="product-image" src={cartItem.product.image} />
