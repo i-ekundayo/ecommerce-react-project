@@ -17,7 +17,7 @@ const OrderSummary = ({cart, deliveryOptions, loadCart}) => {
               <DeliveryDate selectedDeliveryOption={selectedDeliveryOption} />
 
               <div className="cart-item-details-grid">
-                <CardItemDetails cartItem={cartItem}/>
+                <CardItemDetails cartItem={cartItem} loadCart={loadCart}/>
 
                 <DeliveryOptions deliveryOptions={deliveryOptions} cartItem={cartItem} loadCart={loadCart}/>
               </div>
