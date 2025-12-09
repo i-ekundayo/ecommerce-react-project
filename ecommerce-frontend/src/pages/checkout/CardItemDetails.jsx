@@ -29,7 +29,7 @@ const CardItemDetails = ({ cartItem, loadCart }) => {
     setQuantity(value);
   };
 
-  const updateCartWithKey = async (e) => {
+  const updateCartWithKey = (e) => {
     if(e.key === "Enter") {
       updateCartItem();
     }

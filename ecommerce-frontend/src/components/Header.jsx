@@ -1,17 +1,35 @@
-import { NavLink } from 'react-router';
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router";
 import CartIcon from "../assets/images/icons/cart-icon.png";
-import SearchIcon from '../assets/images/icons/search-icon.png';
-import LogoWhite from '../assets/images/logo-white.png';
-import MobileLogoWhite from '../assets/images/mobile-logo-white.png';
-import './Header.css';
+import SearchIcon from "../assets/images/icons/search-icon.png";
+import LogoWhite from "../assets/images/logo-white.png";
+import MobileLogoWhite from "../assets/images/mobile-logo-white.png";
+import "./Header.css";
 
-const Header = ({cart}) => {
+const Header = ({ cart }) => {
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+
+  const getSearchInput = () => {
+    navigate(`/?search=${searchInput}`);
+  };
+
+  const searchInputText = (e) => {
+    const input = e.target.value;
+    setSearchInput(input);
+  };
+
+  const getSearchInputWithKey = (e) => {
+    if (e.key === "Enter") {
+      getSearchInput();
+    }
+  };
+
   let totalQuantity = 0;
-  
-  
-  cart.forEach(cartItem => {
+
+  cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
-  })
+  });
   return (
     <>
       <div className="header">
@@ -23,9 +41,16 @@ const Header = ({cart}) => {
         </div>
 
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" />
+          <input
+            className="search-bar"
+            type="text"
+            placeholder="Search"
+            onChange={searchInputText}
+            onKeyDown={getSearchInputWithKey}
+            value={searchInput}
+          />
 
-          <button className="search-button">
+          <button className="search-button" onClick={getSearchInput}>
             <img className="search-icon" src={SearchIcon} />
           </button>
         </div>
@@ -44,6 +69,6 @@ const Header = ({cart}) => {
       </div>
     </>
   );
-}
+};
 
-export default Header
+export default Header;
