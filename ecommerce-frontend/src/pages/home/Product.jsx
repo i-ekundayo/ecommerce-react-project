@@ -4,7 +4,8 @@ import formatMoney from "../../utils/money";
 import CheckmarkIcon from "../../assets/images/icons/checkmark.png";
 
 const Product = ({ loadCart, product }) => {
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
 
   async function addToCart() {
     try {
@@ -12,6 +13,12 @@ const Product = ({ loadCart, product }) => {
         productId: product.id,
         quantity,
       });
+
+      setAdded(true);
+
+      setTimeout(() => {
+        setAdded(false);
+      }, 2000);
     } catch (error) {
       console.log("Failed to post", error);
     }
@@ -61,7 +68,7 @@ const Product = ({ loadCart, product }) => {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart">
+      <div className="added-to-cart" style={{ opacity: added ? 1 : 0 }}>
         <img src={CheckmarkIcon} />
         Added
       </div>
