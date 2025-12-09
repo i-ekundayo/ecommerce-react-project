@@ -1,10 +1,10 @@
 import OrderDetailsGrid from "./OrderDetailsGrid";
 
 
-const OrdersGrid = ({order}) => {
+const OrdersGrid = ({order, loadCart}) => {
   return (
     <div>
-      <OrderDetailsGrid order={order} />
+      <OrderDetailsGrid order={order} loadCart={loadCart} />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import OrderHeader from "./OrderHeader";
 import OrdersGrid from "./OrdersGrid";
 import "./OrdersPage.css";
 
-const OrdersPage = ({ cart }) => {
+const OrdersPage = ({ cart, loadCart }) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const OrdersPage = ({ cart }) => {
               <div key={order.id} className="order-container">
                 <OrderHeader order={order} />
 
-                <OrdersGrid order={order} />
+                <OrdersGrid order={order} loadCart={loadCart} />
               </div>
             );
           })}
